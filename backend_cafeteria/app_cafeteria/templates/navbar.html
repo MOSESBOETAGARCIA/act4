@@ -1,0 +1,23 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li>
+            <a href="#">Empleados</a>
+            <ul>
+                <li><a href="{% url 'agregar_empleado' %}">Agregar Empleado</a></li>
+                <li><a href="{% url 'ver_empleado' %}">Ver Empleados</a></li>
+                <li><a href="{% url 'ver_empleado' %}">Actualizar Empleados</a></li>
+                <li><a href="{% url 'ver_empleado' %}">Borrar Empleados</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Clientes</a>
+            <ul>
+                <li><a href="{% url 'agregar_cliente' %}">Agregar Cliente</a></li>
+                <li><a href="{% url 'ver_cliente' %}">Ver Clientes</a></li>
+                <li><a href="{% url 'ver_cliente' %}">Actualizar Clientes</a></li>
+                <li><a href="{% url 'ver_cliente' %}">Borrar Clientes</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>

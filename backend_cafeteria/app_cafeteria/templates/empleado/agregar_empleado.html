@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Agregar Empleado</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="id_empleado">ID Empleado:</label>
+    <input type="number" id="id_empleado" name="id_empleado" required>
+
+    <label for="puesto">Puesto:</label>
+    <input type="text" id="puesto" name="puesto" required>
+
+    <label for="salario">Salario:</label>
+    <input type="number" step="0.01" id="salario" name="salario" required>
+
+    <label for="disponible">Disponible:</label>
+    <input type="checkbox" id="disponible" name="disponible">
+
+    <label for="fecha_contratacion">Fecha de Contratación:</label>
+    <input type="date" id="fecha_contratacion" name="fecha_contratacion" required>
+
+    <button type="submit">Agregar</button>
+</form>
+{% endblock %}

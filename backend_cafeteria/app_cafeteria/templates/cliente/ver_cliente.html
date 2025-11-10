@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Ver Clientes</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Fecha Registro</th>
+            <th>Activo</th>
+            <th>Dirección</th>
+            <th>Fecha Nacimiento</th>
+            <th>Género</th>
+            <th>Preferencias</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.telefono }}</td>
+            <td>{{ cliente.fecha_registro }}</td>
+            <td>{{ cliente.activo|yesno:"Sí,No" }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>{% if cliente.fecha_nacimiento %}{{ cliente.fecha_nacimiento|date:"d/m/Y" }}{% else %}""{% endif %}</td>
+            <td>{{ cliente.get_genero_display }}</td>
+            <td>{{ cliente.preferencias }}</td>
+            <td>
+                <a href="{% url 'actualizar_cliente' cliente.pk %}" class="btn btn-edit">Editar</a>
+                <a href="{% url 'borrar_cliente' cliente.pk %}" class="btn btn-delete">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Actualizar Cliente</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" value="{{ cliente.nombre }}" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="{{ cliente.email }}" required><br>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" value="{{ cliente.telefono }}" required><br>
+
+    <label for="activo">Activo:</label>
+    <input type="checkbox" id="activo" name="activo" {% if cliente.activo %}checked{% endif %}><br>
+
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" name="direccion" value="{{ cliente.direccion }}"><br>
+
+    <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{% if cliente.fecha_nacimiento %}{{ cliente.fecha_nacimiento|date:'Y-m-d' }}{% endif %}"><br>
+
+    <label for="genero">Género:</label>
+    <select id="genero" name="genero">
+        <option value="">Seleccionar</option>
+        <option value="M" {% if cliente.genero == 'M' %}selected{% endif %}>Masculino</option>
+        <option value="F" {% if cliente.genero == 'F' %}selected{% endif %}>Femenino</option>
+        <option value="O" {% if cliente.genero == 'O' %}selected{% endif %}>Otro</option>
+    </select><br>
+
+    <label for="preferencias">Preferencias:</label>
+    <textarea id="preferencias" name="preferencias">{{ cliente.preferencias }}</textarea><br>
+
+    <button type="submit">Actualizar</button>
+</form>
+{% endblock %}
